@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>ToDo App</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="javascript/actions.js"></script>
+	<script src="javascript/validator.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">ToDo App</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+	      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+	      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	<div class="container">
+		
+		<form name="form" onsubmit="return signup();" method="post">
+			<div class="row">
+				<div class="col-md-6 col-sm-12 col-lg-6 col-md-offset-3">
+					<div class="panel panel-primary">
+							<div class="panel-heading">Enter Your Details Here
+							</div>
+							<div class="panel-body">
+							<form name="myform">
+								<div class="form-group">
+									<label for="myName">E-mail *</label>
+									<input id="email" name="email" class="form-control" type="text">
+									<span class="text-danger">Please enter corrent email</span>
+								</div>
+								<div class="form-group">
+									<label for="myName">First Name *</label>
+									<input id="firstName" name="firstName" class="form-control" type="text">
+									<span class="text-danger">Please enter corrent email</span>
+								</div>
+								<div class="form-group">
+									<label for="lastName">Last Name *</label>
+									<input id="lastName" name="lastName" class="form-control" type="text">
+									<!-- <span class="text-danger">Please enter corrent email</span> -->
+								</div>
+								<div class="form-group">
+									<label for="gender">Gender *</label>
+									<select name="gender" id="gender" class="form-control">
+										<option selected>Male</option>
+										<option>Female</option>
+										<option>Other</option>
+									</select>
+									<!-- <span class="text-danger">Please enter corrent email</span> -->
+								</div>
+								<div class="form-group">
+									<label for="disc">Address *</label>
+									<textarea class="form-control" rows="3" name="address"></textarea>
+								</div>
+								<div class="form-group">
+									<label for="disc">Profile image*</label>
+									</span><input type="file"/ name="profile_image" class="form-control"></span>
+									<span class="text-danger">Please select image</span>
+								</div>
+
+								<button id="submit" value="submit" class="btn btn-primary center">Submit</button>
+
+							</form>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</body>
+
+</html>
