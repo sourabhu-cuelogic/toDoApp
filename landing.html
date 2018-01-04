@@ -20,8 +20,10 @@
 	      <a class="navbar-brand" href="#">ToDo App</a>
 	    </div>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-	      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+	      <!-- <li><a href="javascript:logout();"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+	      <!-- <li><a class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login</a></li> -->
+	      <li><a href="#" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-log-in"></span> Login </a></li>
+	      <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
 	    </ul>
 	  </div>
 	</nav>
@@ -36,18 +38,18 @@
 						<div class="panel-body">
 							<div class="form-group">
 								<label for="myName">E-mail *</label>
-								<input id="email" name="email" class="form-control" type="text">
-								<span class="text-danger" style="display:none;">Please enter correct E-mail!</span>
+								<input id="email" onfocusout="validateField(this);" name="email" class="form-control field" type="text">
+								<span class="text-danger" style="display:none;"></span>
 							</div>
 							<div class="form-group">
 								<label for="myName">First Name *</label>
-								<input id="firstName" name="firstName" class="form-control" type="text">
-								<span class="text-danger" style="display:none;">First name can't be blank!</span>
+								<input id="firstName" onfocusout="validateField(this);" name="firstName" class="form-control field" type="text">
+								<span class="text-danger" style="display:none;">/span>
 							</div>
 							<div class="form-group">
 								<label for="lastName">Last Name *</label>
-								<input id="lastName" name="lastName" class="form-control" type="text">
-								<span class="text-danger" style="display:none;">Last name can't be blank!</span>
+								<input id="lastName" onfocusout="validateField(this);" name="lastName" class="form-control field" type="text">
+								<span class="text-danger" style="display:none;"></span>
 							</div>
 							<div class="form-group">
 								<label for="gender">Gender *</label>
@@ -59,8 +61,8 @@
 							</div>
 							<div class="form-group">
 								<label for="disc">Address *</label>
-								<textarea class="form-control" rows="3" name="address"></textarea>
-								<span class="text-danger" style="display:none;">Address can't be blank!</span>
+								<textarea class="form-control field" onfocusout="validateField(this);" rows="3" name="address"></textarea>
+								<span class="text-danger" style="display:none;"></span>
 							</div>
 							<div class="form-group">
 								<label for="disc">Profile image*</label>
@@ -69,13 +71,13 @@
 
 							<div class="form-group">
 								<label for="myName">Password *</label>
-								<input id="password" name="Password" class="form-control" type="password">
-								<span class="text-danger" style="display:none;">Password can't be blank!</span>
+								<input id="password" name="Password" onfocusout="passwordChecker();" class="form-control field" type="password">
+								<span class="text-danger" style="display:none;"></span>
 							</div>
 							<div class="form-group">
 								<label for="myName">Confirm Password *</label>
-								<input id="confirmPassword" name="confirmPassword" class="form-control" type="password">
-								<span class="text-danger" style="display:none;">Confirm password can't be blank!</span>
+								<input id="confirmPassword" name="confirmPassword" onfocusout="passwordChecker();" class="form-control field" type="password">
+								<span class="text-danger pass-msg" style="display:none;"></span>
 							</div>
 
 							<button type="button" id="signup" value="submit" class="btn btn-primary center">Submit</button>
@@ -84,6 +86,47 @@
 				</div>
 			</div>
 		</form>
+
+		<div id="myModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">
+
+		    <!-- Modal content-->
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title">Login</h4>
+		      </div>
+		      <div class="modal-body">
+		        <form name="form-login" method="post">
+		        	<div class="row">
+		        		<div class="col-md-6 col-sm-12 col-lg-6 col-md-offset-3">
+		        			<div class="panel">
+		        				<div class="panel-body">
+		        					<div class="form-group">
+		        						<label for="myName">E-mail</label>
+		        						<input id="email" name="email" onfocusout="validateField(this, 'Please enter valid email!');" class="form-control" type="text">
+		        						<span class="text-danger" style="display:none;"></span>
+		        					</div>
+
+		        					<div class="form-group">
+		        						<label for="myName">Password *</label>
+		        						<input id="password" name="Password" class="form-control" type="password">
+		        						<span class="text-danger" style="display:none;"></span>
+		        					</div>
+		        				</div>
+		        			</div>
+		        		</div>
+		        	</div>
+		        </form>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" id="signup" onclick="login();" value="login" class="btn btn-primary center">Login</button>
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      </div>
+		    </div>
+
+		  </div>
+		</div>
 	</div>
 
 </body>

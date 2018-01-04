@@ -1,30 +1,23 @@
-var showProfilePage = function () {
-	window.location = "users/profile.html";
+// var showProfilePage = function () {
+// 	window.location = "users/profile.html";
+// }
+
+var redirectTo = function (path) {
+	window.location = path;
 }
 
 var attachHandlers = function () {
 	document.getElementById("signup").addEventListener("click", function(event){
-		event.preventDefault();
+		// event.preventDefault();
 		if(validateForm()){
 			// preventDefault();
 			createUser();
 			console.log("created User");
-			showProfilePage();
+			redirectTo("users/profile.html");
 		} else {
 			return false;
 		}
 	});
-}
-
-var signup = function () {
-	if(validateForm()){
-		preventDefault();
-		createUser();
-		console.log("created User");
-		showProfilePage();
-	} else {
-		return false;
-	}
 }
 
 var prepareUser = function(form) {
@@ -33,7 +26,8 @@ var prepareUser = function(form) {
 		form.firstName.value,
 		form.lastName.value,
 		form.gender.value,
-		form.address.value
+		form.address.value,
+		form.password
 	)
 }
 
@@ -52,7 +46,7 @@ var createUser = function () {
 	localStorage.setItem(
 		'users', JSON.stringify(users)
 	)
-	loginUser(nextUserId);
+	createUserSession(nextUserId);
 }
 
 var userInfo = function() {
@@ -76,4 +70,25 @@ var userProfileForm = function (status) {
 	}
 	document.getElementsByClassName('profile-info')[0].style.display = info;
 	document.form.style.display = form;
+}
+
+var login = function() {
+	var validUser = false;
+	var formLogin = document.getElementsByName('form-login')[0];
+	var users = JSON.parse(localStorage.users);
+	for (var user in users) {
+		if(users[user].email == formLogin.email.value && users[user].password == formLogin.password.value) {
+			validUser = true;
+			createUserSession(user);
+			redirectTo("users/profile.html");
+		}
+	}
+	if (!validUser)
+		alert("Email and password do not match!")
+}
+
+var logout = function() {
+	removeUserSession();
+	alert("You're logout successfully!");
+	redirectTo('../landing.html');
 }

@@ -1,9 +1,10 @@
-var User = function(email, firstName, lastName, gender, address, profileImage) {
+var User = function(email, firstName, lastName, gender, address, password, profileImage) {
 	this.email = email;
 	this.firstName = firstName;
 	this.lastName = lastName;
 	this.gender = gender;
 	this.address = address;
+	this.password = password;
 	this.profileImage = profileImage;
 }
 
@@ -29,6 +30,10 @@ var fetchCurrentUser = function () {
 	return JSON.parse(localStorage.users)[user_id];
 }
 
-var loginUser = function (user_id) {
+var createUserSession = function (user_id) {
 	localStorage.setItem('user_id', user_id);
+}
+
+var removeUserSession = function() {
+	localStorage.removeItem('user_id');
 }

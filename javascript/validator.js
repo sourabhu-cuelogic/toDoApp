@@ -4,87 +4,50 @@ var validateUser = function () {
 }
 
 var validateForm = function () {
-    var form = document.form;
     var validated = true;
-    if (form.email.value == "" || !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(form.email.value)) {
-        // console.log("E-mail highlighter!");
-        validationHighlighter(form.email);
-        validated = false;
-    } else {
-        // console.log("ELSE E-mail highlighter!");
-        removeValidationHighlighter(form.email);
-    }
-    if (form.firstName.value == "") {
-        // console.log("First Name highlighter!");
-        validationHighlighter(form.firstName);
-        validated = false;
-    }else {
-        // console.log("ELSE first name highlighter!");
-        removeValidationHighlighter(form.firstName);
-    }
-    if (form.lastName.value == "") {
-        // console.log("Last name highlighter!");
-        validationHighlighter(form.lastName);
-        validated = false;
-    }else {
-        // console.log("ELSE Last name highlighter!");
-        removeValidationHighlighter(form.lastName);
-    }
-    if (form.address.value == "") {
-        // console.log("address name highlighter!");
-        validationHighlighter(form.address);
-        validated = false;
-    }else {
-        // console.log("ELSE address name highlighter!");
-        removeValidationHighlighter(form.address);
-    }
-    if(form.password.value == "" || form.confirmPassword.value == "") {
-        validationHighlighter(form.address);
-    } else if {
-        if(field.value != "" form.password || field == form.confirmPassword)) {
-            form.confirmPassword.nextElementSibling.innerHTML = 'Passwords do not match!'
-            validationHighlighter(form.confirmPassword);
+    fields = document.getElementsByClassName('field');
+    for(let i=0; i < fields.length; i++){
+        if(fields[i].value == "" && validated == true){
             validated = false;
-        } else {
-            removeValidationHighlighter(field);
+            alert("Please filled all mandatory fields!");
         }
     }
-    // var fields = [
-    //     form.email,
-    //     form.firstName,
-    //     form.lastName,
-    //     form.address,
-    //     form.password,
-    //     form.confirmPassword
-    // ]
-
-    // for (var i = 0; i < fields.length; i++) {
-    //     let field = fields[i];
-    //     if(field.value == "" || 
-    //         field == form.email && !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(form.email.value)){
-    //         validationHighlighter(field);
-    //         validated = false;
-    //     } else {
-    //         removeValidationHighlighter(field);
-    //     }
-    //     if(field.value != "" && (field == form.password || field == form.confirmPassword)) {
-    //         form.confirmPassword.nextElementSibling.innerHTML = 'Passwords do not match!'
-    //         validationHighlighter(form.confirmPassword);
-    //         validated = false;
-    //     } else {
-    //         removeValidationHighlighter(field);
-    //     }
-    // };
-
-    return validated;
+    var passMatch = passwordChecker();
+    return (validated && passMatch);
 }
 
-var validationHighlighter = function(element){
+var validateField = function(field, msg) {
+    if(msg == undefined) {
+        msg = "Please filled mandatory fields.";
+    }
+    if(field.value == "") {
+        validationHighlighter(field, msg);
+    } else if(field.name == 'email' && !(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/).test(field.value)) {
+        // Validating E-mail field.
+        validationHighlighter(field, msg);
+    } else {
+        removeValidationHighlighter(field);
+    }
+}
+
+var validationHighlighter = function(element, msg){
     element.parentNode.className = 'form-group has-error';
+    element.nextElementSibling.innerHTML = msg;
     element.nextElementSibling.style.display = "block";
 }
 
 var removeValidationHighlighter = function(element){
     element.parentNode.className = 'form-group';
     element.nextElementSibling.style.display = 'none';
+}
+
+var passwordChecker = function() {
+  if (form.password.value !=
+    form.confirmPassword.value) {
+    validationHighlighter(form.confirmPassword, 'Passwords do not match!');
+    return false;
+  } else {
+    removeValidationHighlighter(form.confirmPassword);
+    return true;
+  }
 }

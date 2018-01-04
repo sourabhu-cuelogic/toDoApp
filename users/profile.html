@@ -19,13 +19,12 @@
 	      <a class="navbar-brand" href="#">ToDo App</a>
 	    </div>
 	    <ul class="nav navbar-nav navbar-right">
-	      <li><a href="#"><span class="glyphicon glyphicon-user"></span></a></li>
-	      <li><a href="logout();"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+	      <li><a href="javascript:logout();"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
 	    </ul>
 	  </div>
 	</nav>
 	<div class="container">
-		<div class="row profile-info" style="display:block;">
+		<div class="row profile-info" style="display:none;">
 		    <div class="col-md-9">
 		      <div class="panel panel-default">
 		        <div class="panel-body">
@@ -69,45 +68,84 @@
 						<div class="panel-heading">Update Your Details Here
 						</div>
 						<div class="panel-body">
-						<div class="form-group">
-							<label for="myName">E-mail *</label>
-							<input id="email" name="email" class="form-control" type="text">
-							<span class="text-danger" style="display:none;">Please enter correct E-mail!</span>
-						</div>
-						<div class="form-group">
-							<label for="myName">First Name *</label>
-							<input id="firstName" name="firstName" class="form-control" type="text">
-							<span class="text-danger" style="display:none;">First name can't be blank!</span>
-						</div>
-						<div class="form-group">
-							<label for="lastName">Last Name *</label>
-							<input id="lastName" name="lastName" class="form-control" type="text">
-							<span class="text-danger" style="display:none;">Last name can't be blank!</span>
-						</div>
-						<div class="form-group">
-							<label for="gender">Gender *</label>
-							<select name="gender" id="gender" class="form-control">
-								<option selected>Male</option>
-								<option>Female</option>
-								<option>Other</option>
-							</select>
-						</div>
-						<div class="form-group">
-							<label for="disc">Address *</label>
-							<textarea class="form-control" rows="3" name="address"></textarea>
-							<span class="text-danger" style="display:none;">Address can't be blank!</span>
-						</div>
-						<div class="form-group">
-							<label for="disc">Profile image*</label>
-							</span><input type="file"/ name="profile_image" class="form-control"></span>
-						</div>
+							<div class="form-group">
+								<label for="myName">E-mail *</label>
+								<input id="email" name="email" class="form-control" type="text">
+								<span class="text-danger" style="display:none;">Please enter correct E-mail!</span>
+							</div>
+							<div class="form-group">
+								<label for="myName">First Name *</label>
+								<input id="firstName" name="firstName" class="form-control" type="text">
+								<span class="text-danger" style="display:none;">First name can't be blank!</span>
+							</div>
+							<div class="form-group">
+								<label for="lastName">Last Name *</label>
+								<input id="lastName" name="lastName" class="form-control" type="text">
+								<span class="text-danger" style="display:none;">Last name can't be blank!</span>
+							</div>
+							<div class="form-group">
+								<label for="gender">Gender *</label>
+								<select name="gender" id="gender" class="form-control">
+									<option selected>Male</option>
+									<option>Female</option>
+									<option>Other</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="disc">Address *</label>
+								<textarea class="form-control" rows="3" name="address"></textarea>
+								<span class="text-danger" style="display:none;">Address can't be blank!</span>
+							</div>
+							<div class="form-group">
+								<label for="disc">Profile image*</label>
+								<span><input type="file" name="profile_image" class="form-control" /></span>
+							</div>
 
-						<button id="submit" value="submit" class="btn btn-primary center">Update</button>
-						<button id="cancel" value="cancel" onclick="userProfileForm('closed');" class="btn btn-default center">Cancel</button>
+							<button id="submit" value="submit" class="btn btn-primary center">Update</button>
+							<button id="cancel" value="cancel" onclick="userProfileForm('closed');" class="btn btn-default center">Cancel</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</form>
+
+
+	    <div class="well well-sm" style="margin: 3rem;">
+	    	<h1 class="text-center">Bootstrap Todo</h1>
+	    </div>
+
+		<div class="row to-do-list">
+	        <div class="col-md-6">
+	            <div class="todolist not-done">
+	             <h1>Todos</h1>
+					<div class="input-group">
+					  <input type="text" class="form-control add-todo" placeholder="Add todo">
+					  <span class="input-group-btn">
+						<button class="btn btn-default" type="button">Add</button>
+					  </span>
+					</div>
+	                    
+	                    <hr>
+	                	<ul class="list-group">
+	                	  <li class="list-group-item d-flex justify-content-between align-items-center">
+	                	    Cras justo odio
+	                	    <span class="badge badge-pill badge-danger">X</span>
+	                	  </li>
+	                	  <li class="list-group-item d-flex justify-content-between align-items-center">
+	                	    Dapibus ac facilisis in
+	                	    <span class="badge badge-pill badge-danger">X</span>
+	                	  </li>
+	                	  <li class="list-group-item d-flex justify-content-between align-items-center">
+	                	    Morbi leo risus
+	                	    <span class="badge badge-pill badge-danger">X</span>
+	                	  </li>
+	                	</ul>
+	                <div class="todo-footer">
+	                    <strong><span class="count-todos"></span></strong> Items Left
+	                </div>
+	            </div>
+	        </div>
+	    </div>
 	</div>
 
 </body>
