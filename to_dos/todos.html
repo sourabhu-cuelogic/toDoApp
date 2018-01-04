@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>ToDos</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<script src="../javascript/actions.js"></script>
+	<script src="../javascript/validator.js"></script>
+	<script src="../javascript/models.js"></script>
+	<script src="../javascript/todos.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<nav class="navbar navbar-inverse">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">ToDo App</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right">
+		  <li><a href="../users/profile.html"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+	      <li><a href="javascript:logout();"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6 col-sm-12 col-lg-6 col-md-offset-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">Add Todo
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<label for="title">Title *</label>
+							<input id="title" name="title" class="form-control"  onfocusout="validateField(this, 'Field is mandatory!');" type="text">
+							<span class="text-danger" style="display:none;"></span>
+						</div>
+						<div class="form-group">
+							<label for="date">Date *</label>
+							<input type='date' placeholder='dd/mm/yyyy' name='date' id='date' onfocusout="dateValidator(this, 'Choose future date!');" />
+							<span class="text-danger" style="display:none;"></span>
+						</div>
+						<div class="form-group">
+							<label for="categories">Categories *</label>
+							<label><input class="categories" type="checkbox" name="categories[]" value="immediately"> Do immediately</label>
+							<label><input class="categories" type="checkbox" name="categories[]" value="delegate">Delegate</label>
+							<label><input class="categories" type="checkbox" name="categories[]" value="drop">Drop</label>
+							<label><input class="categories" type="checkbox" name="categories[]" value="defer">Defer</label>
+							<span class="text-danger" style="display:none;"></span>
+						</div>
+						<div class="form-group">
+							<label for="disc">Public *</label>
+							<div class="radio">
+							  <label><input type="radio" name="isPublic" value="1">Yes</label>
+							</div>
+							<div class="radio">
+							  <label><input type="radio" name="isPublic" value="0">No</label>
+							</div>
+							<span class="text-danger" style="display:none;"></span>
+						</div>
+						<div class="form-group">
+							<input type="checkbox" name="isReminder" id="isReminder" class="form-check-input" onclick="toggleReminderDate(this);"/>
+							<label for="isReminder">Reminder</label>
+						</div>
+						<div class="form-group reminder-date" data-reminder-date="true" style="display:none;">
+							<label for="disc">Reminder Date *</label>
+							<input type='date' placeholder='dd/mm/yyyy' name='reminderDate' id='reminder-date'  onfocusout="dateValidator(this, 'Choose future date!');"/>
+							<span class="text-danger" style="display:none;"></span>
+						</div>
+						<div class="form-group">
+							<label for="disc">Upload Image</label>
+							<span><input type="file" name="attachment" class="form-control" /></span>
+						</div>
+
+						<button id="add" onclick="addTodo();" value="add" class="btn btn-primary center">Add</button>
+						<button id="cancel" value="cancel" onclick="userProfileForm('closed');" class="btn btn-default center">Cancel</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	   <!--  <div class="well well-sm" style="margin: 3rem;">
+	    	<h1 class="text-center">Todo</h1>
+	    </div> -->
+
+		<!-- <div class="row to-do-list">
+	        <div class="col-md-6">
+	            <div class="todolist not-done">
+					<div class="input-group">
+					  <input type="text" class="form-control add-todo" placeholder="Add todo">
+					  <span class="input-group-btn">
+						<button class="btn btn-default" type="button">Add</button>
+					  </span>
+					</div>
+	                    
+					<hr>
+					<ul class="list-group">
+					  <li class="list-group-item d-flex justify-content-between align-items-center">
+						Cras justo odio
+						<span class="badge badge-pill badge-danger">X</span>
+					  </li>
+					  <li class="list-group-item d-flex justify-content-between align-items-center">
+						Dapibus ac facilisis in
+						<span class="badge badge-pill badge-danger">X</span>
+					  </li>
+					  <li class="list-group-item d-flex justify-content-between align-items-center">
+						Morbi leo risus
+						<span class="badge badge-pill badge-danger">X</span>
+					  </li>
+					</ul>
+	                <div class="todo-footer">
+	                    <strong><span class="count-todos"></span></strong> Items Left
+	                </div>
+	            </div>
+	        </div>
+	    </div> -->
+	</div>
+
+</body>
+
+</html>

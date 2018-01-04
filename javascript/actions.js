@@ -8,9 +8,7 @@ var redirectTo = function (path) {
 
 var attachHandlers = function () {
 	document.getElementById("signup").addEventListener("click", function(event){
-		// event.preventDefault();
 		if(validateForm()){
-			// preventDefault();
 			createUser();
 			console.log("created User");
 			redirectTo("users/profile.html");
@@ -47,6 +45,22 @@ var createUser = function () {
 		'users', JSON.stringify(users)
 	)
 	createUserSession(nextUserId);
+}
+
+var createTodo = function () {
+	var todos, nextTodoId;
+	todo = prepareNewTodo();
+	try {
+		todos = JSON.parse(localStorage.todos);
+	}
+	catch(e){
+		todos = {};
+	}
+	nextTodoId = lastTodoIndex() + 1;
+	todos[nextTodoId] = todo;
+	localStorage.setItem(
+		'todos', JSON.stringify(todos)
+	)
 }
 
 var userInfo = function() {
@@ -92,3 +106,4 @@ var logout = function() {
 	alert("You're logout successfully!");
 	redirectTo('../landing.html');
 }
+

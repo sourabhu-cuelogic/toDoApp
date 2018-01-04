@@ -51,3 +51,39 @@ var passwordChecker = function() {
     return true;
   }
 }
+
+var dateValidator = function(field, msg) {
+    var validDate = false;
+    var todayDate = new Date();
+    if(field.value == ""){
+       validationHighlighter(field, 'Field can not be blank!')
+    } else if(new Date(field.value) < todayDate){
+        validationHighlighter(field, msg);
+    } else {
+        validDate = true;
+        removeValidationHighlighter(field);
+    }
+    return validDate;
+}
+
+var validateTodoForm = function () {
+    var validForm = true, title, date, categories, isPublic, hasReminder;
+    title = document.getElementById("title").value;
+    date = dateValidator(document.getElementById('date'), '');
+    categories = getCategories();
+    isPublic = getIsPublic();
+    hasReminder = document.getElementById('isReminder').checked;
+
+    if(hasReminder) {
+        validReminderDate = dateValidator(document.getElementById('reminder-date'), '');
+    }
+
+    if((title == "") ||
+        !date ||
+        (categories.length < 1) ||
+        (isPublic == undefined) || (hasReminder && !validReminderDate)) {
+        validForm = false;
+        alert("Please fill all mandatory fileds!");
+    }
+    return validForm;
+}

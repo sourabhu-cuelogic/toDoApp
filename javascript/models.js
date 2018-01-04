@@ -8,6 +8,16 @@ var User = function(email, firstName, lastName, gender, address, password, profi
 	this.profileImage = profileImage;
 }
 
+var Todo = function(title, date, categories, reminderDate, isPublic, isDone, attachment) {
+	this.title = title;
+	this.date = date;
+	this.categories = categories;
+	this.reminderDate = reminderDate;
+	this.isPublic = isPublic;
+	this.isDone = isDone;
+	this.attachment = attachment;
+}
+
 var lastUserIndex = function () {
 	var index;
 	try {
