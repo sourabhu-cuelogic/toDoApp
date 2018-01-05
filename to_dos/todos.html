@@ -14,7 +14,7 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body>
+<body onload="todosRow()">
 	<nav class="navbar navbar-inverse">
 	  <div class="container-fluid">
 	    <div class="navbar-header">
@@ -28,7 +28,7 @@
 	</nav>
 	<div class="container">
 
-		<div class="row">
+		<div class="row todo-form" style="display:none;">
 			<div class="col-md-6 col-sm-12 col-lg-6 col-md-offset-3">
 				<div class="panel panel-primary">
 					<div class="panel-heading">Add Todo
@@ -77,47 +77,76 @@
 						</div>
 
 						<button id="add" onclick="addTodo();" value="add" class="btn btn-primary center">Add</button>
-						<button id="cancel" value="cancel" onclick="userProfileForm('closed');" class="btn btn-default center">Cancel</button>
+						<button id="cancel" value="cancel" onclick="toggleTodoForm('closed');" class="btn btn-default center">Cancel</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
-	   <!--  <div class="well well-sm" style="margin: 3rem;">
+	    <div class="well well-sm" style="margin: 3rem;">
 	    	<h1 class="text-center">Todo</h1>
-	    </div> -->
+	    	<button class="btn btn-primary" onclick="toggleTodoForm('open');"> Add Todo</button>
 
-		<!-- <div class="row to-do-list">
-	        <div class="col-md-6">
-	            <div class="todolist not-done">
-					<div class="input-group">
-					  <input type="text" class="form-control add-todo" placeholder="Add todo">
-					  <span class="input-group-btn">
-						<button class="btn btn-default" type="button">Add</button>
-					  </span>
-					</div>
-	                    
-					<hr>
-					<ul class="list-group">
-					  <li class="list-group-item d-flex justify-content-between align-items-center">
-						Cras justo odio
-						<span class="badge badge-pill badge-danger">X</span>
-					  </li>
-					  <li class="list-group-item d-flex justify-content-between align-items-center">
-						Dapibus ac facilisis in
-						<span class="badge badge-pill badge-danger">X</span>
-					  </li>
-					  <li class="list-group-item d-flex justify-content-between align-items-center">
-						Morbi leo risus
-						<span class="badge badge-pill badge-danger">X</span>
-					  </li>
-					</ul>
-	                <div class="todo-footer">
-	                    <strong><span class="count-todos"></span></strong> Items Left
-	                </div>
-	            </div>
-	        </div>
-	    </div> -->
+	    	<div class="row todo-info" style="display:none;">
+    		    <div class="col-md-9">
+    		      <div class="panel panel-default">
+    		        <div class="panel-body">
+    		          <div class="row">
+    					<div class="col-md-4 text-center">
+    		              <img class="img-circle avatar avatar-original" style="-webkit-user-select:none; 
+    		              display:block; margin:auto;" src="">
+    		            </div>
+    		            <div class="col-md-8">
+    		              <div class="row">
+    		                <div class="col-md-12">
+    		                  <h1 class="only-bottom-margin" id="full-name"></h1>
+    		                </div>
+    		              </div>
+    		              <div class="row">
+    		                <div class="col-md-8">
+    		                  <strong class="text-muted">Title:</strong> <span class="todo-title"></span><br>
+    		                  <strong class="text-muted">Date:</strong> <span class="todo-date"></span><br>
+    		                  <strong class="text-muted">Categories:</strong><span class="todo-categories"></span><br>
+    		                  <strong class="text-muted">Reminder date:</strong><span class="todo-reminderDate"></span><br>
+    		                  <strong class="text-muted">Public:</strong><span class="todo-isPublic"></span><br>
+    		                  <strong class="text-muted">Dane:</strong><span class="todo-isDone"></span><br>
+    		                  <strong class="text-muted">Attachment:</strong><span class="todo-attachment"></span><br>
+    		                </div>
+    		              </div>
+    		            </div>
+    		          </div>
+    		          <div class="row">
+    		            <div class="col-md-12">
+    		              <hr><button class="btn btn-default pull-right" onclick="userProfileForm('open');"><i class="glyphicon glyphicon-pencil"></i> Edit</button>
+    		            </div>
+    		          </div>
+    		        </div>
+    		      </div>
+    		    </div>
+	    	</div>
+		    
+	    	<div class="todos-info">
+			    <table class="table table-striped table-hover table-users">
+			        <thead class="thead-dark">
+			            <tr>
+			                <th>Title</th>
+			                <th>Date</th>
+			                <th>Categories</th>
+			                <th>Reminder date</th>
+			                <th>Public</th>
+			                <th>Done</th>
+			                <th>Attachment</th>
+			                <th></th>
+			                <th></th>
+			            </tr>
+			        </thead>
+			        <tbody>
+			        </tbody>
+			    </table>
+			</div>
+	    </div>
+
+		
 	</div>
 
 </body>

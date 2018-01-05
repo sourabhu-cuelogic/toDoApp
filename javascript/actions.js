@@ -47,22 +47,6 @@ var createUser = function () {
 	createUserSession(nextUserId);
 }
 
-var createTodo = function () {
-	var todos, nextTodoId;
-	todo = prepareNewTodo();
-	try {
-		todos = JSON.parse(localStorage.todos);
-	}
-	catch(e){
-		todos = {};
-	}
-	nextTodoId = lastTodoIndex() + 1;
-	todos[nextTodoId] = todo;
-	localStorage.setItem(
-		'todos', JSON.stringify(todos)
-	)
-}
-
 var userInfo = function() {
 	var attrs = ['email', 'gender', 'address'];
 	var currentUser = fetchCurrentUser();
